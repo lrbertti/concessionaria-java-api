@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.json.simple.JSONObject;
+
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -81,7 +81,7 @@ public class VeiculoService {
 	/*
 	 * Metodo para criar um veiculo
 	 */
-	
+	public Veiculo create(JSONObject jsonVeiculo) {
 		veiculo.setId(parseId(jsonVeiculo));
 		setVeiculoValues(jsonVeiculo, veiculo);
 		
