@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.github.lubertti.concessionariajavaapi.model.Veiculo;
+import net.sf.json.JSONObject;
 
 @Service
 public class VeiculoService {
@@ -61,7 +62,7 @@ public class VeiculoService {
 		return ZonedDateTime.parse(updated, formatter.withZone(ZoneId.of("UTC"))).toLocalDateTime();
 	}
 	
-	private void setVeiculoValeus(JSONObject jsonVeiculo, Veiculo veiculo) {
+	private void setVeiculoValues(JSONObject jsonVeiculo, Veiculo veiculo) {
 		
 		String veiculos = (String) jsonVeiculo.get("veiculo");
 		String marca = (String) jsonVeiculo.get("marca");
@@ -82,6 +83,8 @@ public class VeiculoService {
 	 * Metodo para criar um veiculo
 	 */
 	public Veiculo create(JSONObject jsonVeiculo) {
+		
+		Veiculo veiculo;
 		veiculo.setId(parseId(jsonVeiculo));
 		setVeiculoValues(jsonVeiculo, veiculo);
 		
